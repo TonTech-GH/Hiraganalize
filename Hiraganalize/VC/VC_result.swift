@@ -8,31 +8,16 @@
 
 import UIKit
 
-class VC_result: UIViewController {
-
+class VC_result: UIViewController, ResultDelegate {
+    
+    func Closed() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        self.view.backgroundColor = UIColor.red
-        
-        let ti = UITextField(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
-        ti.text = "結果出力"
-        
-        let btn = UIButton(frame: CGRect(x: 0, y: 120, width: 300, height: 100))
-        btn.center = self.view.center
-        btn.backgroundColor = UIColor.blue
-        btn.setTitle("BACK", for: UIControl.State.normal)
-        btn.addTarget(self, action: #selector(didButtonTapped), for: .touchUpInside)
-        self.view.addSubview(btn)
-        
-        self.view.addSubview(ti)
-        
+        self.view = View_result(frame: UIScreen.main.bounds, vc: self)
     }
-    
-    @objc func didButtonTapped() {
-        self.dismiss(animated: true, completion: nil)
-    }
-
 }
 
