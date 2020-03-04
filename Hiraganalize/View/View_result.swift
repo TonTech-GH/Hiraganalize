@@ -11,6 +11,7 @@ import UIKit
 // ViewControllerへの通知用delegate
 protocol ResultDelegate : class {
     func Closed()
+    func ResultStr() -> String
 }
 
 // 結果画面レイアウト
@@ -24,7 +25,7 @@ class View_result: UIView {
         self.backgroundColor = UIColor.red
         
         let ti = UITextField(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
-        ti.text = "結果出力"
+        ti.text = vc.ResultStr()
         self.addSubview(ti)
         
         let btn = UIButton(frame: CGRect(x: 0, y: 120, width: 300, height: 100))

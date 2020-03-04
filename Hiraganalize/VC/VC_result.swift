@@ -19,5 +19,13 @@ class VC_result: UIViewController, ResultDelegate {
         // Do any additional setup after loading the view.
         self.view = View_result(frame: UIScreen.main.bounds, vc: self)
     }
+    
+    func ResultStr() -> String {
+        let str = SharedModel.instance.GetHiraganaStr()
+        if let s = str {
+            return s
+        }
+        return "Invalid State"
+    }
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EA195487240F0389009EDE1E /* View_input.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA195486240F0389009EDE1E /* View_input.swift */; };
 		EA43705D240F1CCC00EEEEC2 /* View_result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43705C240F1CCC00EEEEC2 /* View_result.swift */; };
+		EA437060240F243D00EEEEC2 /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43705F240F243D00EEEEC2 /* SharedModel.swift */; };
 		EA46D52F240E1F7B0042B781 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D52E240E1F7B0042B781 /* AppDelegate.swift */; };
 		EA46D531240E1F7B0042B781 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D530240E1F7B0042B781 /* SceneDelegate.swift */; };
 		EA46D533240E1F7B0042B781 /* VC_input.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D532240E1F7B0042B781 /* VC_input.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		EA195486240F0389009EDE1E /* View_input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View_input.swift; sourceTree = "<group>"; };
 		EA43705C240F1CCC00EEEEC2 /* View_result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View_result.swift; sourceTree = "<group>"; };
+		EA43705F240F243D00EEEEC2 /* SharedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModel.swift; sourceTree = "<group>"; };
 		EA46D52B240E1F7B0042B781 /* Hiraganalize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiraganalize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA46D52E240E1F7B0042B781 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA46D530240E1F7B0042B781 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA43705E240F23EB00EEEEC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA43705F240F243D00EEEEC2 /* SharedModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EA46D522240E1F7B0042B781 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +117,7 @@
 			children = (
 				EA46D55E240E3C100042B781 /* VC */,
 				EA46D55F240E3C3B0042B781 /* View */,
+				EA43705E240F23EB00EEEEC2 /* Model */,
 				EA46D52E240E1F7B0042B781 /* AppDelegate.swift */,
 				EA46D530240E1F7B0042B781 /* SceneDelegate.swift */,
 				EA46D534240E1F7B0042B781 /* Main.storyboard */,
@@ -289,6 +300,7 @@
 				EA46D533240E1F7B0042B781 /* VC_input.swift in Sources */,
 				EA46D561240E3CCB0042B781 /* VC_result.swift in Sources */,
 				EA46D52F240E1F7B0042B781 /* AppDelegate.swift in Sources */,
+				EA437060240F243D00EEEEC2 /* SharedModel.swift in Sources */,
 				EA46D531240E1F7B0042B781 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
