@@ -22,19 +22,34 @@ class View_result: UIView {
         super.init(frame: frame)
         
         self.myvc = vc
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
         
-        let ti = UITextField(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
-        ti.text = vc.ResultStr()
-        self.addSubview(ti)
+        let tv = UITextView()
+        tv.text = vc.ResultStr()
+        tv.isEditable = false
+        tv.backgroundColor = .white
+        tv.layer.masksToBounds = true
+        tv.layer.cornerRadius = 20
+        tv.layer.borderWidth = 1
+        tv.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6).cgColor
+        tv.font = UIFont.systemFont(ofSize: 20)
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(tv)
+        tv.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        tv.centerYAnchor.constraint(equalTo: self.topAnchor, constant: self.bounds.height / 3).isActive = true
+        tv.widthAnchor.constraint(equalToConstant: self.bounds.width * 4 / 5).isActive = true
+        tv.heightAnchor.constraint(equalToConstant: self.bounds.height / 2).isActive = true
         
-        let btn = UIButton(frame: CGRect(x: 0, y: 120, width: 300, height: 100))
-        btn.center = self.center
+        let btn = UIButton()
         btn.backgroundColor = UIColor.blue
-        btn.setTitle("BACK", for: UIControl.State.normal)
+        btn.setTitle("もどる", for: UIControl.State.normal)
         btn.addTarget(self, action: #selector(didButtonTapped), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(btn)
-        
+        btn.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        btn.centerYAnchor.constraint(equalTo: self.topAnchor, constant: self.bounds.height * 2 / 3).isActive = true
+        btn.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        btn.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     required init?(coder: NSCoder) {
