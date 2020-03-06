@@ -1,5 +1,5 @@
 //
-//  SharedModel.swift
+//  Hiraganalizer.swift
 //  Hiraganalize
 //
 //  Created by Yushi Nakaide on 2020/03/04.
@@ -21,23 +21,23 @@ enum Err: Int {
 }
 
 // ViewControllerへの通知用delegate
-protocol SharedModelDelegate : class {
+protocol HiraganalizerDelegate : class {
     func Hiraganalized()
     func Error(err: Err)
 }
 
 // アプリ共通のモデル(singleton)
-class SharedModel {
+class Hiraganalizer {
     static private let AppID: String = ""
     static private let Url: String = "https://labs.goo.ne.jp/api/hiragana"
     
-    static let instance = SharedModel()
+    static let instance = Hiraganalizer()
     private var strHiragana: String?
     
     private init() {
     }
     
-    func Hiraganalize(str: String, vc: SharedModelDelegate) {
+    func Hiraganalize(str: String, vc: HiraganalizerDelegate) {
         self.strHiragana = nil
         
         if str.isEmpty {
@@ -46,7 +46,7 @@ class SharedModel {
         }
         // Json化するためのdict
         var jDict = Dictionary<String, Any>()
-        jDict["app_id"     ] = SharedModel.AppID
+        jDict["app_id"     ] = Hiraganalizer.AppID
         jDict["request_id" ] = "request_id"
         jDict["sentence"   ] = str
         jDict["output_type"] = "hiragana"
@@ -66,7 +66,7 @@ class SharedModel {
             return
         }
         // 通信リクエスト生成
-        let req = NSMutableURLRequest(url: URL(string: SharedModel.Url)!)
+        let req = NSMutableURLRequest(url: URL(string: Hiraganalizer.Url)!)
         req.httpMethod = "POST"
         req.addValue("application/json", forHTTPHeaderField: "Content-Type")
         req.httpBody = jsonData
