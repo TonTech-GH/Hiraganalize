@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VC_input: UIViewController, InputDelegate, SharedModelDelegate {
+class VC_input: UIViewController, InputDelegate, HiraganalizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,18 +18,17 @@ class VC_input: UIViewController, InputDelegate, SharedModelDelegate {
     }
     
     func InputFinished(str: String) {
-        print(str)
         // ひらがな化開始
-        SharedModel.instance.Hiraganalize(str: str, vc: self)
+        Hiraganalizer.instance.Hiraganalize(str: str, vc: self)
     }
     
     func Hiraganalized() {
-        let hiragana = SharedModel.instance.GetHiraganaStr()
-        if let h = hiragana {
-            print(h)
-        }
         let vcNext = VC_result()
         self.present(vcNext, animated: true, completion: nil)
+    }
+    
+    func Error(err: Err) {
+        print("エラーが発生しました Code:" + err.rawValue.description)
     }
     
 }

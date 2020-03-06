@@ -21,7 +21,7 @@ class VC_result: UIViewController, ResultDelegate {
     }
     
     func ResultStr() -> String {
-        let str = SharedModel.instance.GetHiraganaStr()
+        let str = Hiraganalizer.instance.GetHiraganaStr()
         if let s = str {
             return s
         }
