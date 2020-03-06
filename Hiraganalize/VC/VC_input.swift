@@ -24,12 +24,12 @@ class VC_input: UIViewController, InputDelegate, SharedModelDelegate {
     }
     
     func Hiraganalized() {
-        let hiragana = SharedModel.instance.GetHiraganaStr()
-        if let h = hiragana {
-            print(h)
-        }
         let vcNext = VC_result()
         self.present(vcNext, animated: true, completion: nil)
+    }
+    
+    func Error(err: Err) {
+        print("エラーが発生しました Code:" + err.rawValue.description)
     }
     
 }
