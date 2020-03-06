@@ -35,6 +35,7 @@ class Hiraganalizer {
     private var strHiragana: String?
     
     private init() {
+        precondition(!Hiraganalizer.AppID.isEmpty)  // AppIDを正しく設定してください
     }
     
     func Hiraganalize(str: String, vc: HiraganalizerDelegate) {
