@@ -17,6 +17,16 @@ class VC_input: UIViewController, InputDelegate, HiraganalizerDelegate {
         self.view = View_input(frame: UIScreen.main.bounds, vc: self)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // SafeArea取得可能になった
+        let win = UIApplication.shared.keyWindow
+        if let w = win {
+            let safe = w.safeAreaInsets
+            let view = self.view as! View_input
+            view.SetSafearea(safearea: safe)
+        }
+    }
+    
     func InputFinished(str: String) {
         // ひらがな化開始
         Hiraganalizer.instance.Hiraganalize(str: str, vc: self)

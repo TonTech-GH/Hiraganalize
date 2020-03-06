@@ -29,9 +29,14 @@ class View_result: UIView {
         tv.isEditable = false
         tv.backgroundColor = .white
         tv.layer.masksToBounds = true
-        tv.layer.cornerRadius = 20
         tv.layer.borderWidth = 1
-        tv.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6).cgColor
+        tv.layer.borderColor = UIColor.black.cgColor
+        
+        tv.layer.cornerRadius = tv.frame.size.height/2
+        tv.clipsToBounds = false
+        tv.layer.shadowOpacity = 0.4
+        tv.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        
         tv.font = UIFont.systemFont(ofSize: 20)
         tv.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tv)
