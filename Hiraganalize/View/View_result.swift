@@ -24,30 +24,36 @@ class View_result: UIView {
         self.myvc = vc
         self.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
         
+        // UITextViewにはうまく影が付かないので影用のView
+        let sdw = UIButton()
+        sdw.backgroundColor = UIColor.white
+        sdw.SetDefaultShadow()
+        sdw.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(sdw)
+        sdw.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        sdw.centerYAnchor.constraint(equalTo: self.topAnchor, constant: self.bounds.height / 3).isActive = true
+        sdw.widthAnchor.constraint(equalToConstant: self.bounds.width * 4 / 5).isActive = true
+        sdw.heightAnchor.constraint(equalToConstant: self.bounds.height / 2).isActive = true
+        
+        // 結果出力用View
         let tv = UITextView()
         tv.text = vc.ResultStr()
         tv.isEditable = false
         tv.backgroundColor = .white
         tv.layer.masksToBounds = true
-        tv.layer.borderWidth = 1
-        tv.layer.borderColor = UIColor.black.cgColor
-        
-        tv.layer.cornerRadius = tv.frame.size.height/2
-        tv.clipsToBounds = false
-        tv.layer.shadowOpacity = 0.4
-        tv.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        
         tv.font = UIFont.systemFont(ofSize: 20)
         tv.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tv)
-        tv.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        tv.centerYAnchor.constraint(equalTo: self.topAnchor, constant: self.bounds.height / 3).isActive = true
-        tv.widthAnchor.constraint(equalToConstant: self.bounds.width * 4 / 5).isActive = true
-        tv.heightAnchor.constraint(equalToConstant: self.bounds.height / 2).isActive = true
+        tv.centerXAnchor.constraint(equalTo: sdw.centerXAnchor).isActive = true
+        tv.centerYAnchor.constraint(equalTo: sdw.centerYAnchor).isActive = true
+        tv.widthAnchor.constraint(equalTo: sdw.widthAnchor).isActive = true
+        tv.heightAnchor.constraint(equalTo: sdw.heightAnchor).isActive = true
         
+        // 入力画面への遷移ボタン
         let btn = UIButton()
         btn.backgroundColor = UIColor.blue
         btn.setTitle("もどる", for: UIControl.State.normal)
+        btn.SetDefaultVisual()
         btn.addTarget(self, action: #selector(didButtonTapped), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(btn)

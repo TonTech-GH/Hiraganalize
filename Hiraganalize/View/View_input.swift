@@ -26,7 +26,6 @@ class View_input: UIView, UITextFieldDelegate {
         self.backgroundColor = UIColor.white
         
         // テキスト入力UI
-        //let ti = UITextField(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
         let ti = UITextField()
         ti.placeholder = "ここの入力文章がひらがな化"
         ti.becomeFirstResponder()
@@ -35,10 +34,7 @@ class View_input: UIView, UITextFieldDelegate {
         ti.borderStyle = UITextField.BorderStyle.bezel
         ti.borderRect(forBounds: ti.bounds)
         ti.backgroundColor = .white
-        ti.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        ti.layer.shadowColor = UIColor.black.cgColor
-        ti.layer.shadowOpacity = 0.4
-        ti.layer.shadowRadius = 4
+        ti.SetDefaultShadow()
         ti.delegate = self
         ti.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(ti)
@@ -48,20 +44,30 @@ class View_input: UIView, UITextFieldDelegate {
         ti.widthAnchor.constraint(equalToConstant: self.bounds.width * 4 / 5).isActive = true
         ti.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        // 完了ボタン
+        // タイトル表示
+        let ttl = UIImageView(image: UIImage(named: "Title"))
+        ttl.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(ttl)
+        ttl.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        ttl.bottomAnchor.constraint(equalTo: ti.topAnchor, constant: -20).isActive = true
+        ttl.widthAnchor.constraint(equalTo: ti.widthAnchor, multiplier: 0.7).isActive = true
+        let aspect = ttl.bounds.height / ttl.bounds.width
+        ttl.heightAnchor.constraint(equalTo: ttl.widthAnchor, multiplier: CGFloat(aspect)).isActive = false
+        
+        // ひらがな化開始ボタン
         let btn = UIButton()
         btn.backgroundColor = UIColor.blue
-        btn.setTitle("ひらがなにする", for: UIControl.State.normal)
+        btn.setTitle("ひらがな化", for: UIControl.State.normal)
+        btn.SetDefaultVisual()
         btn.addTarget(self, action: #selector(InputFinished), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(btn)
-        
         btn.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         btn.topAnchor.constraint(equalTo: ti.centerYAnchor, constant: 50).isActive = true
         btn.widthAnchor.constraint(equalToConstant: 150).isActive = true
         btn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        // クレジット表記
+        // クレジット表示
         let cre = View_credit()
         cre.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(cre)
