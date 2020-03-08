@@ -9,6 +9,7 @@
 import UIKit
 
 class VC_input: UIViewController, InputDelegate, HiraganalizerDelegate {
+    var isBusy: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,17 +29,24 @@ class VC_input: UIViewController, InputDelegate, HiraganalizerDelegate {
     }
     
     func InputFinished(str: String) {
+        if self.isBusy {
+            print("Now Busy")
+            return
+        }
         // ひらがな化開始
         Hiraganalizer.instance.Hiraganalize(str: str, vc: self)
+        self.isBusy = true
     }
     
     func Hiraganalized() {
+        self.isBusy = false
         let vcNext = VC_result()
         self.present(vcNext, animated: true, completion: nil)
     }
     
     func Error(err: Err) {
         print("エラーが発生しました Code:" + err.rawValue.description)
+        self.isBusy = false
     }
     
 }
